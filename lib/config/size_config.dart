@@ -36,13 +36,3 @@ double getHeight([double percent = 100]) {
 double getFontSize([double size = 1]) {
   return SizeConfig.safeAreaWidth * size / 411;
 }
-
-/* Widget getText(String text, {double size = 1, Color color = Colors.black}) {
-  return Text(
-    text,
-    style: TextStyle(
-      fontSize: getFontSize(size),
-      color: color,
-    ),
-  );
-} */
