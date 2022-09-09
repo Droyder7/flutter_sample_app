@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample_app/home_page.dart';
+import 'package:flutter_sample_app/config/size_config.dart';
+import 'package:flutter_sample_app/app_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,26 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context); // initialize SizeConfig with context
+
+    const appWidget = AppPage();
+
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(appWidget.toString()),
+        ),
+        body: appWidget,
+      ),
     );
   }
 }
