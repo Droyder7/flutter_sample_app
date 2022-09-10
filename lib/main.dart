@@ -29,15 +29,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context); // initialize SizeConfig with context
 
-    const appWidget = AppPage();
-
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(appWidget.toString()),
-        ),
-        body: appWidget,
-      ),
+    return const SafeArea(
+      child: AppPage(),
     );
   }
 }
