@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
     SizeConfig().init(context); // initialize SizeConfig with context
 
     return const SafeArea(
-      child: AppPage(),
+      child: LayoutCardList(),
     );
   }
 }
