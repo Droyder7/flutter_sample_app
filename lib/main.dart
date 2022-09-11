@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/config/size_config.dart';
 import 'package:flutter_sample_app/app_page.dart';
+import 'package:flutter_sample_app/widgets/device_preview_widgets.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    getDevicePreviewOnApp(
+      app: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,12 +16,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return getMaterialAppWithPreview(
+      context: context,
       title: 'Flutter Sample App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       home: const HomePage(),
     );
   }
