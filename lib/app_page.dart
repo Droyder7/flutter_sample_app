@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_app/app/todo_app.dart';
 
 class AppPage extends StatelessWidget {
   // Page widget contains Scaffold with app bar and body
@@ -7,11 +8,6 @@ class AppPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(toString()),
-      ),
-      body: Container(),
-    );
+    return const TodoApp();
   }
 }
