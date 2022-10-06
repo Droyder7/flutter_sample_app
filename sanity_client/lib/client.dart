@@ -7,18 +7,18 @@ const sanityApiVersion = "v2021-10-21";
 
 class SanityClient {
   String dataset;
-  final _HttpClient _client;
+  final _HttpClient _client; // private http client for fetching data
   final String projectId;
   final String? token;
   final bool useCdn;
   final bool allowDraft;
 
-  factory SanityClient({
+  factory SanityClient({ // factory constructor to call to create an object
     required String projectId,
     required String dataset,
     required String token,
     bool useCdn = true,
-    required bool allowDraft,
+    bool allowDraft = true,
   }) {
     return SanityClient._createInstance(
       projectId: projectId,
@@ -29,7 +29,7 @@ class SanityClient {
     );
   }
 
-  SanityClient._createInstance({
+  SanityClient._createInstance({ // private named cosntructor which can't be called
     required this.projectId,
     required this.dataset,
     required this.token,
@@ -37,6 +37,7 @@ class SanityClient {
     required this.allowDraft,
   }) : _client = _HttpClient(token!);
 
+  // fetch documents with given query
   Future<dynamic> fetch({
     required String query,
     Map<String, dynamic>? params,
@@ -46,6 +47,7 @@ class SanityClient {
     return _returnResponse(response);
   }
 
+  // get imageUrl from imageRefId
   String imageUrl(
     String imageRefId, {
     int? width,
@@ -61,6 +63,7 @@ class SanityClient {
     );
   }
 
+  // get documentUrl from documentRefId
   String documentUrl(String documentRefId) {
     return urlForDocument(documentRefId, client: this);
   }
@@ -81,6 +84,7 @@ class SanityClient {
     return datasets;
   }
 
+  // building Uri for fetching query results
   Uri _buildUri({required String query, Map<String, dynamic>? params}) {
     final Map<String, dynamic> queryParameters = <String, dynamic>{
       'query': query,
