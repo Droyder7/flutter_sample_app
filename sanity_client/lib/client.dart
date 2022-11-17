@@ -13,7 +13,8 @@ class SanityClient {
   final bool useCdn;
   final bool allowDraft;
 
-  factory SanityClient({ // factory constructor to call to create an object
+  factory SanityClient({
+    // factory constructor to call to create an object
     required String projectId,
     required String dataset,
     required String token,
@@ -29,7 +30,8 @@ class SanityClient {
     );
   }
 
-  SanityClient._createInstance({ // private named cosntructor which can't be called
+  SanityClient._createInstance({
+    // private named cosntructor which can't be called
     required this.projectId,
     required this.dataset,
     required this.token,
@@ -106,10 +108,10 @@ class SanityClient {
         return responseJson['result'];
       case 400:
         throw BadRequestException(response.body.toString());
-      case 401:
+      // case 401:
       case 403:
         throw UnauthorizedException(response.body.toString());
-      case 500:
+      // case 500:
       default:
         throw FetchDataException(
           '${response.statusCode}: ${response.body.toString()}',
